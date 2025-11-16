@@ -1,4 +1,3 @@
-// Namespace de modelos de domínio da aplicação (entidades usadas pelo EF Core)
 namespace OdontoApi.Models
 {
     // Entidade que representa uma consulta (Appointment) no sistema
