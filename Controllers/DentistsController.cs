@@ -16,13 +16,6 @@ namespace OdontoApi.Controllers
         public async Task<IEnumerable<Dentist>> Get() =>
             await _db.Dentists.ToListAsync();
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Dentist>> Get(int id)
-        {
-            var d = await _db.Dentists.FindAsync(id);
-            return d == null ? NotFound() : d;
-        }
-
         [HttpPost]
         public async Task<ActionResult<Dentist>> Post(Dentist d)
         {
@@ -51,3 +44,4 @@ namespace OdontoApi.Controllers
         }
     }
 }
+
