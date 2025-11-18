@@ -33,7 +33,7 @@ namespace OdontoApi.Controllers
                 return BadRequest("MaterialId inválido.");
                 
             _db.Appointments.Add(a);
-            await _db.SaveChangesAsync();  // Se passou pelas validações, adiciona a consulta e salva no banco
+            await _db.SaveChangesAsync();
             
             return CreatedAtAction(nameof(Get), new { id = a.Id }, a);
         }
@@ -59,5 +59,6 @@ namespace OdontoApi.Controllers
         }
     }
 }
+
 
 
