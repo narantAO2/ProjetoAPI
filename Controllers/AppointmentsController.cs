@@ -45,6 +45,7 @@ namespace OdontoApi.Controllers
 
             _db.Entry(a).State = EntityState.Modified;   // Modo de otimização
             await _db.SaveChangesAsync();
+            return NoContent();
         }
         
         [HttpDelete("{id}")]
@@ -55,11 +56,8 @@ namespace OdontoApi.Controllers
             if (a == null) return NotFound();
             
             _db.Appointments.Remove(a); 
-            await _db.SaveChangesAsync(); 
+            await _db.SaveChangesAsync();
+            return NoContent(); 
         }
     }
 }
-
-
-
-

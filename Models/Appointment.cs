@@ -4,13 +4,13 @@ namespace OdontoApi.Models
     {
         public int Id { get; set; }
 
-        public string PatientName { get; set; }
+        public string PatientName { get; set; } = " ";
         
-        public string PatientPhone { get; set; }
+        public string PatientPhone { get; set; } = " ";
 
         public DateTime ScheduledAt { get; set; }
 
-        public string Status { get; set; }
+        public string Status { get; set; } = " ";
 
         public int DentistId { get; set; }
 
@@ -25,6 +25,3 @@ namespace OdontoApi.Models
         public Material? Material { get; set; }
     }
 }
-
-
-
