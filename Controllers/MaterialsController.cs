@@ -16,12 +16,6 @@ namespace OdontoApi.Controllers
         public async Task<IEnumerable<Material>> Get() =>
             await _db.Materials.ToListAsync();
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Material>> Get(int id)
-        {
-            var m = await _db.Materials.FindAsync(id);
-            return m == null ? NotFound() : m;
-        }
 
         [HttpPost]
         public async Task<ActionResult<Material>> Post(Material m)
