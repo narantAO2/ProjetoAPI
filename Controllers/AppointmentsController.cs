@@ -10,7 +10,7 @@ namespace OdontoApi.Controllers
     public class AppointmentsController : ControllerBase
     {
         private readonly AppDbContext _db;
-        public AppointmentsController(AppDbContext db) => _db = db;
+        public AppointmentsController(AppDbContext db) => _db = db;       // Metodo para acessar o banco de dados
         
         [HttpGet]
         public async Task<IEnumerable<Appointment>> Get() =>
@@ -59,6 +59,7 @@ namespace OdontoApi.Controllers
         }
     }
 }
+
 
 
 
