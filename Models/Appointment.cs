@@ -10,17 +10,14 @@ namespace OdontoApi.Models
 
         public DateTime ScheduledAt { get; set; }
 
-        // Situação atual da consulta (por exemplo: Scheduled, Rescheduled, Canceled)
         public string Status { get; set; } = "";
 
         public int DentistId { get; set; }
 
-        // Propriedade de navegação para acessar os dados completos do dentista
         public Dentist? Dentist { get; set; }
 
         public int ProcedureId { get; set; }
 
-        // Propriedade de navegação para acessar os dados completos do procedimento
         public Procedure? Procedure { get; set; }
 
         public int MaterialId { get; set; }
@@ -28,4 +25,5 @@ namespace OdontoApi.Models
         public Material? Material { get; set; }
     }
 }
+
 
