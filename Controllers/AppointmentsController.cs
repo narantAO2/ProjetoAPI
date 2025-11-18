@@ -5,17 +5,14 @@ using OdontoApi.Models;
 
 namespace OdontoApi.Controllers
 {
-    // Controller responsável pelos endpoints da API para trabalhar com Appointment (consultas)
-    // A rota base será: http://localhost:5083/Appointments
+
     [ApiController]
     [Route("Appointments")]
     public class AppointmentsController : ControllerBase
     {
-        // Injeção de dependência do AppDbContext para acessar o banco de dados
         private readonly AppDbContext _db;
         public AppointmentsController(AppDbContext db) => _db = db;
 
-        // GET /Appointments
         // Busca TODAS as consultas no banco, incluindo os dados relacionados de Dentist e Procedure
         [HttpGet]
         public async Task<IEnumerable<Appointment>> Get() =>
@@ -24,8 +21,6 @@ namespace OdontoApi.Controllers
                 .Include(a => a.Procedure) // faz o join para trazer o procedimento
                 .ToListAsync();
 
-        // GET /Appointments/{id}
-        // Busca UMA consulta específica pelo Id; retorna 404 se não encontrar
         [HttpGet("{id}")]
         public async Task<ActionResult<Appointment>> Get(int id)
         {
@@ -37,8 +32,6 @@ namespace OdontoApi.Controllers
             return a == null ? NotFound() : a;
         }
 
-        // POST /Appointments
-        // Cria uma nova consulta (Appointment) no banco de dados
         // Antes de salvar, valida se o DentistId e o ProcedureId existem
         [HttpPost]
         public async Task<ActionResult<Appointment>> Post(Appointment a)
@@ -55,12 +48,9 @@ namespace OdontoApi.Controllers
             _db.Appointments.Add(a);
             await _db.SaveChangesAsync();
 
-            // Retorna 201 Created com o recurso criado e a rota para consultá‑lo
             return CreatedAtAction(nameof(Get), new { id = a.Id }, a);
         }
 
-        // PUT /Appointments/{id}
-        // Atualiza uma consulta existente; o id da URL deve ser o mesmo do objeto enviado
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, Appointment a)
         {
@@ -73,8 +63,6 @@ namespace OdontoApi.Controllers
             return NoContent(); // 204: atualização feita sem retornar conteúdo
         }
 
-        // DELETE /Appointments/{id}
-        // Remove uma consulta do banco, se ela existir
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
@@ -88,4 +76,5 @@ namespace OdontoApi.Controllers
             return NoContent(); // 204 indicando que foi excluído com sucesso
         }
     }
+
 }
