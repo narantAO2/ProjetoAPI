@@ -43,7 +43,7 @@ namespace OdontoApi.Controllers
         {
             if (id != a.Id) return BadRequest();
 
-            _db.Entry(a).State = EntityState.Modified;   // Marca a entidade como modificada e salva as alterações
+            _db.Entry(a).State = EntityState.Modified;   // Modo de otimização
             await _db.SaveChangesAsync();
         }
         
@@ -55,8 +55,9 @@ namespace OdontoApi.Controllers
             if (a == null) return NotFound();
             
             _db.Appointments.Remove(a); 
-            await _db.SaveChangesAsync();    // Remove a consulta e salva a alteração no banco
+            await _db.SaveChangesAsync(); 
         }
     }
 }
+
 
